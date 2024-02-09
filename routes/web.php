@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RestoController;
 
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,3 +20,16 @@ use App\Http\Controllers\RestoController;
 
 Route::get('/', 'RestoController@view');
 Route::get('list', 'RestoController@list');
+
+Route::view('add', 'addResto');
+Route::post('/add', 'RestoController@add');
+
+Route::get('/delete/{id}', 'RestoController@delete');
+
+Route::get('/edit/{id}', 'RestoController@edit');
+Route::post('edit', 'RestoController@update');
+
+Route::post('/search', 'RestoController@search');
+
+Route::get('register', 'UserController@register');
+Route::get('login', 'UserController@login');

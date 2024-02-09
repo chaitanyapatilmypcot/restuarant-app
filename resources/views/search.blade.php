@@ -4,7 +4,7 @@
 
 {{-- Search Functionality --}}
 <div class="d-flex justify-content-center m-4"> <!-- Use flex utilities for centering -->
-    <form class="d-flex col-sm-6 align-center" role="search" action="/search" method="POST">
+    <form class="d-flex col-sm-6 align-center" role="search" method="POST" action="/search">
         @csrf
       <input class="form-control me-2" type="search" placeholder="Search" name="search">
       <button class="btn btn-outline-success" type="submit">Search</button>
@@ -12,13 +12,6 @@
 </div>
 
 
-@if (session('user')) 
-    <p class="alert alert-danger" id="myAlert">{{session('user')}}'s data has been deleted successfuly</p>
-@endif
-
-@if (session('edit')) 
-    <p class="alert alert-success" id="myAlert">{{session('edit')}}'s data has been updated successfuly</p>
-@endif
 
 <div class="table-responsive container mt-5 shadow p-3 mb-5 bg-body rounded">
     <table class="table table-hover">
@@ -48,6 +41,7 @@
             @endforeach
         </tbody>
       </table>
+      <a href="/list" class="btn btn-outline-secondary">Show Full List</a>
 </div>
    
 @endsection
