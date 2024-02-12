@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // To set the global variable
+        // view()->share('id');
     }
 }

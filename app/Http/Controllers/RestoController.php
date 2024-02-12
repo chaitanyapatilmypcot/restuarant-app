@@ -15,11 +15,17 @@ class RestoController extends Controller
     }
 
     function list() {
-        $data = Restaurant::all();
+        $userId = session('name')['id'];
+        $data = Restaurant::where('user_id', $userId)->get();
         return view('list', ['data' => $data]);
     }
 
     function add(request $req) {
+        // if(session('loggedIn')) {
+        //     print_r(session('name')['id']);
+        //     exit;
+        // }
+
 
         // Validation
         $req->validate([
@@ -28,11 +34,14 @@ class RestoController extends Controller
             'address' => 'required'
         ]);
 
+        
+
         $resto = new Restaurant;
         $resto->name = $req->name;
         $resto->email = $req->email;
         $resto->address = $req->address;
-
+        $resto->user_id = session('name')['id'];      //dynamically take the user's id and map to the restuarant table to show the user, the list he has created only not other's list!
+ 
         $data = $req->input();
         $req->session()->flash('user', $data['name']);
 

@@ -17,7 +17,7 @@
         <form method="POST" action="/add">
 
             @csrf
-
+            
             <div class="mb-3 form-group">
               <label for="exampleInputEmail1" class="form-label">Name</label>
               <input type="text" class="form-control" id="name" name="name">
@@ -35,6 +35,8 @@
                 <input type="text" class="form-control" id="email" name="address">
                 <span style="color: red">@error('address'){{$message}}@enderror</span>
             </div>
+
+            {{-- <input type="hidden" name="user_id" value="{{$uid}}"> --}}
             
             <button type="submit" class="btn btn-primary">Submit</button>
             <a href="/list" class="btn btn-outline-secondary">Go back</a>

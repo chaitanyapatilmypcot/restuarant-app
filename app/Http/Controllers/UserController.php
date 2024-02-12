@@ -35,12 +35,12 @@ class UserController extends Controller
     function loginUser(Request $req) {
 
         $req->validate([
-                'email' => 'required | exists:users',  //can add condition if user email is on found and told them to register
+                'email' => 'required | exists:users',  //can add condition if user email is no found and told them to register
                 'password' => 'required',
             ]
             , 
             [
-                'email.exists' => 'Email already exists, kindly use other or log-in.',
+                'email.exists' => 'You are not registered yet, kindly register first!',
             ]
         );
 
@@ -53,7 +53,7 @@ class UserController extends Controller
 
         if(!empty($user)) {
             $req->session()->put('loggedIn', true);
-            $req->session()->put('name', $user['username']);
+            $req->session()->put('name', $user);
             return redirect('/')->with('login', ' ,logged In!');
         }
         return redirect('login')->with('Error', 'Invalid Credentials try again or Sign up');
