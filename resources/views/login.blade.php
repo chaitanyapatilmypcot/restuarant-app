@@ -10,9 +10,23 @@
 
     <div class="col-sm-6 container">
         
-        
+        @if (session('registered'))
+            <p class="alert alert-success" id="myAlert">{{session('registered')}} registered successfully! Kindly Login</p> <br>
+        @endif
 
-        <form method="POST" action="/add">
+        @if (session('Error'))
+            <p class="alert alert-danger" id="myAlert">{{session('Error')}}</p><br>
+        @endif
+
+        @if (session('logout'))
+            <p class="alert alert-warning" id="myAlert">{{session('logout')}}</p><br>
+        @endif
+
+        @if (session('unauthorized'))
+            <p class="alert alert-warning" id="myAlert">{{session('unauthorized')}}</p><br>
+        @endif
+
+        <form method="POST" action="/login">
 
             @csrf
 

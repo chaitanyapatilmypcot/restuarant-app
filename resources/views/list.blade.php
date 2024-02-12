@@ -2,6 +2,45 @@
 
 @section('content')
 
+<style>
+    .notification{
+      position: fixed;
+      top: 5em;
+      right: 4em;
+    }
+</style>
+
+{{-- Session messages --}}
+
+@if (session('edit')) 
+    <div class="notification" id="myAlert">
+        <alert class="alert alert-success" role="alert">{{session('edit')}}'s data has been updated successfuly
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </alert>
+    </div>
+@endif
+
+@if(session('user'))
+    <div class="notification" id="myAlert">
+        <alert class="alert alert-warning" role="alert">{{session('user')}}'s data has been deleted successfuly
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </alert>
+    </div>
+@endif
+
+@if(session('login'))
+    <div class="notification" id="myAlert">
+        <alert class="alert alert-success" role="alert">{{session('name')}}{{session('login')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </alert>
+    </div>
+@endif
+
+<div class="container ">
+    <h1 class="text-center m-4">List of Restaurants</h1>
+</div>
+
+
 {{-- Search Functionality --}}
 <div class="d-flex justify-content-center m-4"> <!-- Use flex utilities for centering -->
     <form class="d-flex col-sm-6 align-center" role="search" action="/search" method="POST">
@@ -12,13 +51,7 @@
 </div>
 
 
-@if (session('user')) 
-    <p class="alert alert-danger" id="myAlert">{{session('user')}}'s data has been deleted successfuly</p>
-@endif
 
-@if (session('edit')) 
-    <p class="alert alert-success" id="myAlert">{{session('edit')}}'s data has been updated successfuly</p>
-@endif
 
 <div class="table-responsive container mt-5 shadow p-3 mb-5 bg-body rounded">
     <table class="table table-hover">

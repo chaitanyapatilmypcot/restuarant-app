@@ -16,34 +16,72 @@
 </head>
 <body>
     {{-- Navbar --}}
+    @if (session('loggedIn'))
     <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="navbar-brand" href="/">MyResto</a>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/list">List</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/add">Add</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/login">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/register">Register</a>
-              </li>
-            </ul>
-            
-          </div>
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">MyResto</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/list">List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/add">Add</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto flex-row"> <!-- Adjusted to use flex-row class -->
+            <li class="nav-item">
+              <a class="btn btn-outline-danger btn-sm mt-1 me-md-2" aria-current="page" href="/logout">Logout</a>
+            </li>
+          </ul>
+          
         </div>
-      </nav>
+      </div>
+    </nav>
+
+
+    @else
+       
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">MyResto</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/list">List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/add">Add</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/register">Register</a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav> 
+
+    @endif
+
+
+    
 
 
     <div>
@@ -56,6 +94,17 @@
 
 
 
+    @if (session('loggedIn'))
+
+    <section class="fixed-bottom">
+      <footer class="text-center text-white py-0" style="background-color: #8abeee;">
+        <div class="text-center py-0" style="background-color: rgba(36, 35, 35, 0.2);">
+          © 2024 Copyright:
+          <a class="text-white" href="/">RestoAPP</a>
+        </div>
+      </footer>
+
+    @else
 
     <section class="fixed-bottom">
       <!-- Footer -->
@@ -66,24 +115,26 @@
           <section class="">
             <p class="d-flex justify-content-center align-items-center">
               <span class="me-3">Register for free</span>
-              <button data-mdb-ripple-init type="button" class="btn btn-outline-light btn-rounded">
+              <a data-mdb-ripple-init type="button" class="btn btn-outline-light btn-rounded" href="/register">
                 Sign up!
-              </button>
+              </a>
             </p>
           </section>
           <!-- Section: CTA -->
         </div>
-        <!-- Grid container -->
-    
+        <!-- Grid container --> 
         <!-- Copyright -->
-        <div class="text-center py-0" style="background-color: rgba(36, 35, 35, 0.2);">
-          © 2024 Copyright:
-          <a class="text-white" href="/">RestoAPP</a>
-        </div>
+          <div class="text-center py-0" style="background-color: rgba(36, 35, 35, 0.2);">
+            © 2024 Copyright:
+            <a class="text-white" href="/">RestoAPP</a>
+          </div>
         <!-- Copyright -->
       </footer>
       <!-- Footer -->
     </section>
+    @endif
+
+
 </body>
 </html>
 
@@ -94,7 +145,7 @@
       $( document ).ready(function() {
           setTimeout(() => {      
               $("#myAlert").fadeOut('slow');
-          }, 2000);
+          }, 3500);
       });
   </script>
 

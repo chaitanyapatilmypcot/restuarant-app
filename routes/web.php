@@ -19,17 +19,30 @@ use App\Http\Controllers\UserController;
 
 
 Route::get('/', 'RestoController@view');
-Route::get('list', 'RestoController@list');
 
-Route::view('add', 'addResto');
-Route::post('/add', 'RestoController@add');
 
-Route::get('/delete/{id}', 'RestoController@delete');
-
-Route::get('/edit/{id}', 'RestoController@edit');
-Route::post('edit', 'RestoController@update');
-
-Route::post('/search', 'RestoController@search');
 
 Route::get('register', 'UserController@register');
+Route::post('/register', 'UserController@registerUser');
+
 Route::get('login', 'UserController@login');
+Route::post('/login', 'UserController@loginUser');
+
+Route::get('logout', 'UserController@logout');
+
+
+// Middleware
+Route::group(['middleware' => ['protectedPage']], function(){
+    
+    Route::get('list', 'RestoController@list');
+
+    Route::view('add', 'addResto');
+    Route::post('/add', 'RestoController@add');
+
+    Route::get('/delete/{id}', 'RestoController@delete');
+
+    Route::get('/edit/{id}', 'RestoController@edit');
+    Route::post('edit', 'RestoController@update');
+
+    Route::post('/search', 'RestoController@search');
+});

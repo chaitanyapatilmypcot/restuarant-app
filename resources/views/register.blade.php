@@ -12,13 +12,13 @@
         
         
 
-        <form method="POST" action="/add">
+        <form method="POST" action="/register">
 
             @csrf
 
             <div class="mb-3 form-group">
               <label for="exampleInputEmail1" class="form-label">Username</label>
-              <input type="text" class="form-control" id="name" name="name">
+              <input type="text" class="form-control" id="name" name="username">
               <span style="color: red">@error('username'){{$message}}@enderror</span>
             </div>
 
