@@ -32,7 +32,7 @@
 
             <div class="mb-3 form-group">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
                 <span style="color: red">@error('email'){{$message}}@enderror</span>
             </div>
 
@@ -40,7 +40,8 @@
             
             <div class="mb-3 form-group">
                 <label for="exampleInputEmail1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="password" name="password" value="{{old('password')}}"> 
+                {{-- add visible password option in future --}}
                 <span style="color: red">@error('password'){{$message}}@enderror</span>
             </div>
             

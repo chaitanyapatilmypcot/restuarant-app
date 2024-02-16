@@ -14,7 +14,7 @@
             <p class="alert alert-success" id="myAlert">{{session('user')}}'s data has been added successfully</p>
         @endif
 
-        <form method="POST" action="/add">
+        <form method="POST" action="/add" enctype="multipart/form-data">
 
             @csrf
             
@@ -25,15 +25,21 @@
             </div>
 
             <div class="mb-3 form-group">
-                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email">
                 <span style="color: red">@error('email'){{$message}}@enderror</span>
             </div>
             
             <div class="mb-3 form-group">
-                <label for="exampleInputEmail1" class="form-label">Address</label>
-                <input type="text" class="form-control" id="email" name="address">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address">
                 <span style="color: red">@error('address'){{$message}}@enderror</span>
+            </div>
+
+            <div class="mb-3 form-group">
+                <label for="restoImage" class="form-label">Upload Image</label>
+                <input type="file" name="file" class="form-control form-control-sm" id="restoImage"> 
+                <span style="color: red">@error('file'){{$message}}@enderror</span>
             </div>
 
             {{-- <input type="hidden" name="user_id" value="{{$uid}}"> --}}
@@ -42,6 +48,7 @@
             <a href="/list" class="btn btn-outline-secondary">Go back</a>
 
           </form>
+          
 
     </div>
     

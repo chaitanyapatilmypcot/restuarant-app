@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Pagination\Paginator; 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
     {
         // To set the global variable
         // view()->share('id');
+
+        // use Bootstrap to paginate
+        Paginator::useBootstrap();
     }
 }

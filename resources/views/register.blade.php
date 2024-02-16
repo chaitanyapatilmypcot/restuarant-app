@@ -18,13 +18,13 @@
 
             <div class="mb-3 form-group">
               <label for="exampleInputEmail1" class="form-label">Username</label>
-              <input type="text" class="form-control" id="name" name="username">
+              <input type="text" class="form-control" id="name" name="username" value="{{old('username')}}">
               <span style="color: red">@error('username'){{$message}}@enderror</span>
             </div>
 
             <div class="mb-3 form-group">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
                 <span style="color: red">@error('email'){{$message}}@enderror</span>
             </div>
             

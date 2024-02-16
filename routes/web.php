@@ -18,7 +18,7 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::get('/', 'RestoController@view');
+Route::get('/', 'RestoController@homeList');
 
 
 
@@ -28,7 +28,6 @@ Route::post('/register', 'UserController@registerUser');
 Route::get('login', 'UserController@login');
 Route::post('/login', 'UserController@loginUser');
 
-Route::get('logout', 'UserController@logout');
 
 
 // Middleware
@@ -45,4 +44,7 @@ Route::group(['middleware' => ['protectedPage']], function(){
     Route::post('edit', 'RestoController@update');
 
     Route::post('/search', 'RestoController@search');
+
+    Route::get('logout', 'UserController@logout');
+
 });

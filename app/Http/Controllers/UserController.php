@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\LoginPostRequest;
+use App\Http\Requests\RegisterPostRequest;
 
 class UserController extends Controller
 {
@@ -16,33 +18,13 @@ class UserController extends Controller
         return view('register');
     }
 
-    function registerUser(Request $req) {
-
-        $req->validate([
-            'username' => 'required | min:4 | max:20',
-            'email'    => 'required | unique:users',
-            'password' => 'required | min:6 | max:30',
-        ]);
-
-        $data = new User;
-        $data->username = $req->username;
-        $data->email = $req->email;
-        $data->password = $req->password;
-        $data->save();
+    function registerUser(RegisterPostRequest $req) {
+        $data = User::create($req->all());
         return redirect('login')->with('registered', $data['username']);
     }
 
-    function loginUser(Request $req) {
-
-        $req->validate([
-                'email' => 'required | exists:users',  //can add condition if user email is no found and told them to register
-                'password' => 'required',
-            ]
-            , 
-            [
-                'email.exists' => 'You are not registered yet, kindly register first!',
-            ]
-        );
+    
+    function loginUser(LoginPostRequest $req) {
 
         $credentials = [
             'email' => $req->email,

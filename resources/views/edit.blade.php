@@ -16,7 +16,7 @@
          
         @endif
 
-        <form method="POST" action="/edit">
+        <form method="POST" action="/edit" enctype="multipart/form-data">
             <input type="hidden" name="id" value="{{$data['id']}}">
             @csrf
 
@@ -36,6 +36,13 @@
                 <label for="exampleInputEmail1" class="form-label">Address</label>
                 <input type="text" class="form-control" id="email" name="address" value="{{$data['address']}}">
                 <span style="color: red">@error('address'){{$message}}@enderror</span>
+            </div>
+
+            <div class="mb-3 form-group">
+                <label for="restoImage" class="form-label">Change Image</label>
+                <input type="file" name="file" class="form-control form-control-sm" id="restoImage">
+                <img src="{{ asset('img/' . $data['file'] )}}" class="img-fluid rounded mt-2" alt="{{$data['file']}}">{{$data['file']}}
+                <span style="color: red">@error('file'){{$message}}@enderror</span>
             </div>
             
             <button type="submit" class="btn btn-primary">Submit</button>

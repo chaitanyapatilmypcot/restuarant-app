@@ -19,6 +19,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
+                <th scope="col">Image</th>
                 <th scope="col">Email</th>
                 <th scope="col">Address</th>
                 <th scope="col">Action</th>
@@ -31,6 +32,9 @@
             <tr>
                 <th scope="col">{{$item['id']}}</th>
                 <td scope="col">{{$item['name']}}</td>
+                <td scope="col">
+                    <img src="{{ asset('img/' . $item['file'] )}}" class="img-fluid rounded" alt="{{$item['file']}}">
+                </td>
                 <td scope="col">{{$item['email']}}</td>
                 <td scope="col">{{$item['address']}}</td>
                 <td scope="col"> 
