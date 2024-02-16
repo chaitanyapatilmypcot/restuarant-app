@@ -20,25 +20,25 @@
             
             <div class="mb-3 form-group">
               <label for="exampleInputEmail1" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" name="name">
+              <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
               <span style="color: red">@error('name'){{$message}}@enderror</span>
             </div>
 
             <div class="mb-3 form-group">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
                 <span style="color: red">@error('email'){{$message}}@enderror</span>
             </div>
             
             <div class="mb-3 form-group">
                 <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="address" name="address">
+                <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}">
                 <span style="color: red">@error('address'){{$message}}@enderror</span>
             </div>
 
             <div class="mb-3 form-group">
                 <label for="restoImage" class="form-label">Upload Image</label>
-                <input type="file" name="file" class="form-control form-control-sm" id="restoImage"> 
+                <input type="file" name="file" class="form-control form-control-sm" id="restoImage" value="{{old('')}}"> 
                 <span style="color: red">@error('file'){{$message}}@enderror</span>
             </div>
 

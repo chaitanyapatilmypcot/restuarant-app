@@ -47,4 +47,10 @@ Route::group(['middleware' => ['protectedPage']], function(){
 
     Route::get('logout', 'UserController@logout');
 
+
+    Route::get('/add_emp', 'EmployeeController@index');
+    Route::post('/add_emp', 'EmployeeController@create');
+
+    Route::get('/list_emp', 'EmployeeController@show');
+
 });
