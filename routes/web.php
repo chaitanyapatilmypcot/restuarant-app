@@ -47,4 +47,20 @@ Route::group(['middleware' => ['protectedPage']], function(){
 
     Route::get('logout', 'UserController@logout');
 
+
+
+    //Employee Routes
+    Route::get('/add_emp', 'EmployeeController@index');
+    Route::post('/add_emp', 'EmployeeController@create');
+
+    Route::get('/list_emp', 'EmployeeController@show');
+
+    Route::get('/emp_edit/{id}', 'EmployeeController@edit');
+    Route::post('emp_edit', 'EmployeeController@update');
+
+    Route::get('/emp_delete/{id}', 'EmployeeController@destroy' );
+
+    //Practice Connection 
+    Route::get('/practice_conn', 'EmployeeController@practice_conn');
+
 });

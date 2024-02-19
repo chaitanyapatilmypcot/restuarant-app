@@ -24,17 +24,17 @@
 
 {{-- Session messages --}}
 
-@if (session('edit')) 
+@if (session('emp_edit')) 
     <div class="notification" id="myAlert">
-        <alert class="alert alert-success" role="alert">{{session('edit')}}'s data has been updated successfuly
+        <alert class="alert alert-success" role="alert">{{session('emp_edit')}}'s data has been updated successfuly
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </alert>
     </div>
 @endif
 
-@if(session('user'))
+@if(session('emp_user'))
     <div class="notification" id="myAlert">
-        <alert class="alert alert-warning" role="alert">{{session('user')}}'s data has been deleted successfuly
+        <alert class="alert alert-warning" role="alert">{{session('emp_user')}}'s data has been deleted successfuly
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </alert>
     </div>
@@ -49,18 +49,18 @@
 @endif
 
 <div class="container ">
-    <h1 class="text-center m-4">List of Restaurants</h1>
+    <h1 class="text-center m-4">Employee Shifts Alloted</h1>
 </div>
 
 
 {{-- Search Functionality --}}
-<div class="d-flex justify-content-center m-4"> <!-- Use flex utilities for centering -->
+{{-- <div class="d-flex justify-content-center m-4"> <!-- Use flex utilities for centering -->
     <form class="d-flex col-sm-6 align-center" role="search">
         @csrf
       <input class="form-control me-2" type="search" placeholder="Search" name="search" id="searchItem">
       <button class="btn btn-outline-success" type="submit" id="search">Search</button>
     </form>
-</div>
+</div> --}}
 
 
 <p id="searchLog" class="d-flex justify-content-center m-2"></p>
@@ -71,9 +71,8 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
-                <th scope="col">Image</th>
                 <th scope="col">Email</th>
-                <th scope="col">Address</th>
+                <th scope="col">Restaurant Name</th>
                 <th scope="col">Action</th>
             </tr>
           
@@ -84,14 +83,11 @@
             <tr>
                 <th scope="col">{{$item['id']}}</th>
                 <td scope="col">{{$item['name']}}</td>
-                <td scope="col">
-                    <img src="{{ asset('img/' . $item['file'] )}}" class="img-fluid rounded" alt="{{$item['file']}}">
-                </td>
                 <td scope="col">{{$item['email']}}</td>
-                <td scope="col">{{$item['address']}}</td>
+                <td scope="col">{{$item['restaurant']->name}}</td>
                 <td scope="col"> 
-                    <a href="/delete/{{$item['id']}}"><i class="fa fa-trash m-2"></i></a>
-                    <a href="/edit/{{$item['id']}}"><i class="fa fa-pencil-square"></i></a>
+                    <a href="/emp_delete/{{$item['id']}}"><i class="fa fa-trash m-2"></i></a>
+                    <a href="/emp_edit/{{$item['id']}}"><i class="fa fa-pencil-square"></i></a>
                 </td>
             </tr>
             @endforeach
@@ -99,12 +95,12 @@
       </table>
       
     {{-- Pagination --}}
-    <div class="d-flex justify-content-center mt-2">
+    {{-- <div class="d-flex justify-content-center mt-2">
         {{ $data->links('vendor.pagination.bootstrap-4') }}
-    </div>
+    </div> --}}
 </div>
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $(document).delegate('#search', 'click', function(event) {
         event.preventDefault();
 
@@ -146,8 +142,7 @@
                    
                     row.append('<th scope="col">' + item.id + '</th>');
                     row.append('<td scope="col">' + item.name + '</td>');
-                    var image = item.file;
-                    row.append('<td scope="col"><img src="http://127.0.0.1:8000/img/'+item.file+'" class="img-fluid rounded" alt="' + item.file + '"></td>');
+                    row.append('<td scope="col"><img src="{{ asset("img/' + item.file + '") }}" class="img-fluid rounded" alt="' + item.file + '"></td>');
 
                         //<img src="{{ asset('img/' . $item['file'] )}}" class="img-fluid rounded" alt="{{$item['file']}}">
 
@@ -162,6 +157,6 @@
         }   
     
 
-</script>  
+</script>   --}}
    
 @endsection
