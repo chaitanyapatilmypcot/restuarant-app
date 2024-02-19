@@ -146,7 +146,8 @@
                    
                     row.append('<th scope="col">' + item.id + '</th>');
                     row.append('<td scope="col">' + item.name + '</td>');
-                    row.append('<td scope="col"><img src="{{ asset("img/' + item.file + '") }}" class="img-fluid rounded" alt="' + item.file + '"></td>');
+                    var image = item.file;
+                    row.append('<td scope="col"><img src="http://127.0.0.1:8000/img/'+item.file+'" class="img-fluid rounded" alt="' + item.file + '"></td>');
 
                         //<img src="{{ asset('img/' . $item['file'] )}}" class="img-fluid rounded" alt="{{$item['file']}}">
 

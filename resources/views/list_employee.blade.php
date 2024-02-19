@@ -24,17 +24,17 @@
 
 {{-- Session messages --}}
 
-@if (session('edit')) 
+@if (session('emp_edit')) 
     <div class="notification" id="myAlert">
-        <alert class="alert alert-success" role="alert">{{session('edit')}}'s data has been updated successfuly
+        <alert class="alert alert-success" role="alert">{{session('emp_edit')}}'s data has been updated successfuly
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </alert>
     </div>
 @endif
 
-@if(session('user'))
+@if(session('emp_user'))
     <div class="notification" id="myAlert">
-        <alert class="alert alert-warning" role="alert">{{session('user')}}'s data has been deleted successfuly
+        <alert class="alert alert-warning" role="alert">{{session('emp_user')}}'s data has been deleted successfuly
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </alert>
     </div>
@@ -86,8 +86,8 @@
                 <td scope="col">{{$item['email']}}</td>
                 <td scope="col">{{$item['restaurant']->name}}</td>
                 <td scope="col"> 
-                    <a href="/delete/{{$item['id']}}"><i class="fa fa-trash m-2"></i></a>
-                    <a href="/edit/{{$item['id']}}"><i class="fa fa-pencil-square"></i></a>
+                    <a href="/emp_delete/{{$item['id']}}"><i class="fa fa-trash m-2"></i></a>
+                    <a href="/emp_edit/{{$item['id']}}"><i class="fa fa-pencil-square"></i></a>
                 </td>
             </tr>
             @endforeach

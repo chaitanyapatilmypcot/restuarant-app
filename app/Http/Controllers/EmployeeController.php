@@ -71,7 +71,11 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $EmpData = Employee::find($id);
+
+        $restoData = Restaurant::all();
+
+        return view('edit_employee', ['empData' => $EmpData, 'restoData' => $restoData]);
     }
 
     /**
@@ -81,9 +85,17 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req)
     {
-        //
+        $data = Employee::find($req->id);
+
+        $data->name = $req->name;
+        $data->email = $req->email;
+        $data->restaurant_id = $req->restaurant_id;
+
+        $data->save();
+
+        return redirect('list_emp')->with('emp_edit', $data['name']);
     }
 
     /**
@@ -94,6 +106,13 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Employee::find($id);
+        $data->delete();
+
+        return redirect('list_emp')->with('emp_user',$data['name']);
+    }
+
+    public function practice_conn() {
+        return view('practice_conn');
     }
 }
